@@ -7,7 +7,18 @@
 
 .container h1 {
   font-size: 17pt;
+}
 
+table,td,th {
+border:1px solid black;
+}
+
+table {
+width:100%;
+}
+
+th{
+  height:50px;
 }
 
 nav {

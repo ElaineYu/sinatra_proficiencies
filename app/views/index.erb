@@ -7,15 +7,31 @@
   		<th> Name </th>
   		<th> Skill </th>
   		<th> Years </th>
-  		<th> Formal </th>
+  		<th> Formal? </th>
   	</tr>
-
   <% @users.each do |user| %>
 	  <tr>
+	  	<!--  Name -->
 	  	<td><%= user.name %></td>
-	  	<td><%= user.skills.first.name %></td>
-	  	<td><%= user.proficiencies.first.years_of_experience %></td><br>
-	  	<td><%= user.proficiencies.first.is_formal %></td><br>
+
+	  	<!-- Skills -->
+	  	<td><% user.skills.each do |skill|%>
+	  		<%= skill.name %>&nbsp(<%=skill.context%>)<br> 
+	  		<%end%></td>
+
+	  	<!-- Years of experience -->
+	  	<td> <% user.proficiencies.each do |proficiency| %>
+	  		<%= proficiency.years_of_experience %><br>
+	  		<%end %></td><br>
+
+	  	<!-- Formal? -->
+	  	<td><% user.proficiencies.each do |proficiency| %>
+		  	<% if proficiency.is_formal == true %>
+		  		yes 
+			<% else %>
+				 no 
+			<% end %><br>
+			<%end%></td><br>
 	  <tr>
   	<% end %>
   </table>
